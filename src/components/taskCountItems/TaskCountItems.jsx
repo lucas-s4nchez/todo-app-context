@@ -1,4 +1,3 @@
-import React from "react";
 import { useTodoContext } from "../../context/TodoContextProvider";
 import {
   CounterContainerStyled,
@@ -6,7 +5,11 @@ import {
 } from "./TaskCountItemsStyles";
 
 export const TaskCountItems = () => {
-  const { taskCount, taskPendingCount, todoCompleteCount } = useTodoContext();
+  const { tasks } = useTodoContext();
+
+  const taskCount = tasks.length;
+  const taskPendingCount = tasks.filter((task) => !task.done).length;
+  const todoCompleteCount = tasks.filter((task) => task.done).length;
   return (
     <CounterContainerStyled>
       <CounterItemStyled>Tareas: {taskCount}</CounterItemStyled>

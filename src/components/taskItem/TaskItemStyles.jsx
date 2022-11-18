@@ -5,12 +5,16 @@ export const StyledTaskItemCard = styled.div`
   justify-content: space-between;
   gap: 10px;
   border: 1px solid #191919;
+
+  ${({ done }) => done && `border: 1px solid #22b42e;`}
   border-radius: 5px;
   padding: 10px;
 `;
 
 export const StyledTaskItemText = styled.span`
   font-size: 20px;
+
+  ${({ done }) => done && `text-decoration: line-through;`}
 `;
 export const StyledContainerButtons = styled.div`
   display: flex;

@@ -20,6 +20,9 @@ const GlobalStyle = createGlobalStyle`
         max-width: 100%;
         height: auto;
     }
+    h1{
+      margin-block: 40px;
+    }
 `;
 
 export default GlobalStyle;

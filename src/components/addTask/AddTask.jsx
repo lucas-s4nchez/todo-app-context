@@ -9,11 +9,17 @@ import {
 } from "./AddTaskStyles";
 
 export const AddTask = () => {
-  const { handleNewTask } = useTodoContext();
+  const { dispatch } = useTodoContext();
+
   const { formState, onInputChange, onResetForm } = useForm({
     description: "",
   });
-
+  const handleNewTask = (task) => {
+    dispatch({
+      type: "Add Task",
+      payload: task,
+    });
+  };
   const onSubmit = (e) => {
     e.preventDefault();
 

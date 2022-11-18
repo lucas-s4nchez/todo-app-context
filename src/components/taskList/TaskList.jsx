@@ -1,23 +1,18 @@
 import { useTodoContext } from "../../context/TodoContextProvider";
 import { TaskItem } from "../taskItem/TaskItem";
-import { StyledContainerList } from "./TaskListStyles";
+import { StyledContainerList, StyledMessage } from "./TaskListStyles";
 
 export const TaskList = () => {
-  const { tasks, handleDeleteTask, handleToggleTask } = useTodoContext();
+  const { tasks } = useTodoContext();
   return (
     <>
       <StyledContainerList>
-        {tasks && tasks.length === 0 && <div>No hay tareas</div>}
+        {tasks && tasks.length === 0 && (
+          <StyledMessage>No hay tareas por hacer</StyledMessage>
+        )}
         {tasks &&
           tasks.length > 0 &&
-          tasks.map((task, index) => (
-            <TaskItem
-              key={index}
-              texto={task.description}
-              handleDeleteTask={handleDeleteTask}
-              handleToggleTask={handleToggleTask}
-            />
-          ))}
+          tasks.map((task, index) => <TaskItem key={index} task={task} />)}
       </StyledContainerList>
     </>
   );
