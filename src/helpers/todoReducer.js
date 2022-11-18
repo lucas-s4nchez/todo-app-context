@@ -11,6 +11,8 @@ export const todoReducer = (initialState = [], action) => {
         }
         return task;
       });
+    case "Delete All":
+      return [];
     default:
       return initialState;
   }

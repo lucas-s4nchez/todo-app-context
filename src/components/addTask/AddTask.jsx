@@ -3,13 +3,14 @@ import { useTodoContext } from "../../context/TodoContextProvider";
 import { useForm } from "../../hooks/useForm";
 import {
   StyledButton,
+  StyledContainerFormButtons,
   StyledForm,
   StyledInput,
   StyledInputContainer,
 } from "./AddTaskStyles";
 
 export const AddTask = () => {
-  const { dispatch } = useTodoContext();
+  const { tasks, dispatch } = useTodoContext();
 
   const { formState, onInputChange, onResetForm } = useForm({
     description: "",
@@ -18,6 +19,11 @@ export const AddTask = () => {
     dispatch({
       type: "Add Task",
       payload: task,
+    });
+  };
+  const handleDeleteAll = () => {
+    dispatch({
+      type: "Delete All",
     });
   };
   const onSubmit = (e) => {
@@ -47,9 +53,20 @@ export const AddTask = () => {
             value={formState.description}
             onChange={onInputChange}
           />
-          <StyledButton onClick={onSubmit} type="submit">
-            Agregar
-          </StyledButton>
+          <StyledContainerFormButtons>
+            <StyledButton onClick={onSubmit} type="submit">
+              Agregar
+            </StyledButton>
+            {tasks.length > 0 && (
+              <StyledButton
+                deleteAll
+                onClick={() => handleDeleteAll()}
+                type="submit"
+              >
+                Eliminar todas
+              </StyledButton>
+            )}
+          </StyledContainerFormButtons>
         </StyledForm>
       </StyledInputContainer>
     </>
