@@ -5,7 +5,7 @@ export const NavbarContainer = styled.div`
   width: 100%;
   height: 80px;
   display: flex;
-  background-color: #333;
+  background-color: #191919;
 `;
 
 export const NavbarWrapper = styled.div`
@@ -39,7 +39,7 @@ export const Menu = styled.ul`
   position: absolute;
   top: 80px;
   left: ${({ click }) => (click ? 0 : "-100%")};
-  background-color: #333;
+  background-color: #191919;
   transition: left 0.3s;
   @media (min-width: 768px) {
     flex-direction: row;
@@ -71,10 +71,12 @@ export const MenuItemLink = styled(NavLink)`
   align-items: center;
   justify-content: center;
   padding: 0 20px;
+  color: #ffffff;
+  text-decoration: none;
   &.active {
     color: #61dbfb;
   }
   &:hover {
-    color: #333;
+    color: #191919;
   }
 `;
