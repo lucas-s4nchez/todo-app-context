@@ -26,6 +26,11 @@ export const AddTask = () => {
       type: "Delete All",
     });
   };
+  const isExistingTask = (newTask) =>
+    tasks.find(
+      (task) =>
+        task.description.toLowerCase() === newTask.description.toLowerCase()
+    );
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -38,6 +43,12 @@ export const AddTask = () => {
       description: formState.description.trim(),
       done: false,
     };
+    const exist = isExistingTask(newTask);
+
+    if (exist) {
+      alert("Tarea existente");
+      return;
+    }
     handleNewTask(newTask);
     onResetForm();
   };
