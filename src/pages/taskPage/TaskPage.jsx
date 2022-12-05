@@ -1,5 +1,5 @@
-import { AddTask, TaskCountItems, TaskList } from "../components";
-import { RowContainerStyled } from "../styles/TodoStyles";
+import { AddTask, TaskCountItems, TaskList } from "../../components";
+import { RowContainerStyled } from "../../styles/TodoStyles";
 
 export const TaskPage = () => {
   return (
