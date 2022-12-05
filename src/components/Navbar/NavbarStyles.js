@@ -41,6 +41,7 @@ export const Menu = styled.ul`
   left: ${({ click }) => (click ? 0 : "-100%")};
   background-color: #191919;
   transition: left 0.3s;
+  z-index: 200;
   @media (min-width: 768px) {
     flex-direction: row;
     position: initial;
@@ -75,6 +76,12 @@ export const MenuItemLink = styled(NavLink)`
   text-decoration: none;
   &.active {
     color: #61dbfb;
+  }
+  &.pending {
+    color: #ec2a2a;
+  }
+  &.no-pending {
+    color: #22b42e;
   }
   &:hover {
     color: #191919;

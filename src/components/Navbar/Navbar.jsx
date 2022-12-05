@@ -10,10 +10,12 @@ import {
 } from "./NavbarStyles";
 import { DiReact } from "react-icons/di";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { useTodoContext } from "../../context/TodoContextProvider";
 
 export const Navbar = () => {
   const [click, setClick] = useState(false);
-
+  const { tasks } = useTodoContext();
+  const taskPendingCount = tasks.filter((task) => !task.done).length;
   const handleClick = () => {
     setClick(!click);
   };
@@ -44,7 +46,9 @@ export const Navbar = () => {
             <MenuItem onClick={handleClick}>
               <MenuItemLink
                 to={"/task"}
-                className={`${({ isActive }) => (isActive ? "active" : "")}`}
+                className={`${({ isActive }) => (isActive ? "active" : "")} ${
+                  taskPendingCount ? "pending" : "no-pending"
+                }`}
               >
                 Tasks
               </MenuItemLink>

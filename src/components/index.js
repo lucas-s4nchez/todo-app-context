@@ -3,3 +3,4 @@ export * from "./taskCountItems";
 export * from "./taskItem";
 export * from "./taskList";
 export * from "./navbar";
+export * from "./card";

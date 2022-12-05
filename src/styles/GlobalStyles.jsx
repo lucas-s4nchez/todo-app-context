@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
 }
     body {
         user-select: none;
-        background-color: #181818;
+        background:#181818;
         font-family: 'Poppins', sans-serif;
         -webkit-tap-highlight-color: transparent;
         color:#FFFFFF;
