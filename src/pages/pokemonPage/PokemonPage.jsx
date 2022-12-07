@@ -48,13 +48,12 @@ export const PokemonPage = () => {
         />
         <ButtonSearch type="submit">Buscar</ButtonSearch>
       </FormSearch>
-      {value?.length >= 1 || parseInt(value) > 0 ? (
-        <CardContainer>
-          {isLoading && <p>Cargando...</p>}
-          {isError && <MessageError>{error.message}</MessageError>}
-          {pokemon && <Card data={pokemon.data} />}
-        </CardContainer>
-      ) : null}
+
+      <CardContainer>
+        {isLoading && <p>Cargando...</p>}
+        {isError && <MessageError>{error.message}</MessageError>}
+        {pokemon && <Card data={pokemon.data} />}
+      </CardContainer>
     </>
   );
 };
