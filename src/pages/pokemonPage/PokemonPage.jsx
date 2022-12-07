@@ -13,9 +13,8 @@ import {
 
 export const PokemonPage = () => {
   const [formState, setFormState] = useState("");
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(null);
 
-  const isEnabled = !!formState;
   const handleSubmit = (e) => {
     e.preventDefault();
     const isValidSearch =
@@ -25,7 +24,6 @@ export const PokemonPage = () => {
       return;
     }
     setValue(formState.toLowerCase().trim());
-    isValidSearch ? refetch : undefined;
   };
   const handleChange = (e) => {
     setFormState(e.target.value);
@@ -35,9 +33,8 @@ export const PokemonPage = () => {
     isError,
     data: pokemon,
     error,
-    refetch,
   } = useQuery(["pokemon", value], getPokemon, {
-    enabled: isEnabled,
+    enabled: value !== null,
   });
   return (
     <>
@@ -51,7 +48,7 @@ export const PokemonPage = () => {
         />
         <ButtonSearch type="submit">Buscar</ButtonSearch>
       </FormSearch>
-      {value.length > 1 || parseInt(value) > 0 ? (
+      {value?.length >= 1 || parseInt(value) > 0 ? (
         <CardContainer>
           {isLoading && <p>Cargando...</p>}
           {isError && <MessageError>{error.message}</MessageError>}
